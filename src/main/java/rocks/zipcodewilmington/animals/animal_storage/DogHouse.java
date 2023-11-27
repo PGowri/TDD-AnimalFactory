@@ -7,13 +7,16 @@ import rocks.zipcodewilmington.animals.Dog;
  */
 public class DogHouse {
     private static AnimalWarehouse<Dog> dogHouse = new AnimalWarehouse<>();
+    public static int quantity = 0;
 
     public static void add(Dog dog) {
         dogHouse.add(dog);
+        quantity++;
     }
 
     public static void remove(Integer id) {
         dogHouse.removeAnimalById(id);
+
     }
 
     public static void remove(Dog dog) {
@@ -25,6 +28,7 @@ public class DogHouse {
     }
 
     public static Integer getNumberOfDogs() {
+
         return dogHouse.getNumberOfAnimals();
     }
 

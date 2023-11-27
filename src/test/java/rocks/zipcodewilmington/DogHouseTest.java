@@ -1,5 +1,6 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
@@ -29,6 +30,43 @@ public class DogHouseTest {
         DogHouse.add(animal);
 
         // Then
-        DogHouse.getNumberOfDogs();
+        Assert.assertEquals((int) DogHouse.getNumberOfDogs(), 1);
     }
+
+    @Test
+    public void removeTest(){
+        DogHouse.clear();
+        Dog animal = AnimalFactory.createDog(null, null);
+        DogHouse.add(animal);
+        Assert.assertEquals((int)DogHouse.getNumberOfDogs(), 1);
+        DogHouse.remove(0);
+        Assert.assertEquals((int)DogHouse.getNumberOfDogs(), 0);
+    }
+
+    @Test
+    public void removeDogTest(){
+        DogHouse.clear();
+        Dog animal = AnimalFactory.createDog(null,null);
+        DogHouse.add(animal);
+        Assert.assertEquals((int)DogHouse.getNumberOfDogs(), 1);
+        DogHouse.remove(animal);
+        Assert.assertEquals((int)DogHouse.getNumberOfDogs(),0);
+    }
+    @Test
+    public void getDogById(){
+        DogHouse.clear();
+        Dog animal = AnimalFactory.createDog(null, null);
+        DogHouse.add(animal);
+        Assert.assertEquals(DogHouse.getDogById(0),animal);
+    }
+    @Test
+    public void getDogById1(){
+        DogHouse.clear();
+        Dog animal = AnimalFactory.createDog(null,null);
+        DogHouse.add(animal);
+        DogHouse.add(animal);
+        DogHouse.add(animal);
+        Assert.assertEquals((int) DogHouse.getNumberOfDogs(),3);
+    }
+
 }

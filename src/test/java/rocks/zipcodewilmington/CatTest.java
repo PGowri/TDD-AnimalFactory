@@ -1,8 +1,12 @@
 package rocks.zipcodewilmington;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.Date;
 
@@ -40,4 +44,57 @@ public class CatTest {
         Assert.assertEquals(givenId, retrievedId);
     }
 
-}
+    @Test
+    public void testSetName()  {
+
+        String givenName = "Zula";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+        String name  = "Fido";
+        Cat cat = new Cat(givenName, givenBirthDate, givenId);
+        cat.setName(name);
+        Assert.assertEquals(name, cat.getName());
+    }
+
+
+    @Test
+    public void setBirthDate() {
+        Cat cat = new Cat(null,null, null);
+        cat.setBirthDate(new Date(2022,1,10));
+
+        Assert.assertEquals(cat.getBirthDate(), new Date(2022, 1, 10));
+    }
+
+    @Test
+    public void testEat(){
+        Cat cat = new Cat(null, null, null);
+        cat.eat(new Food());
+        Assert.assertEquals((int)cat.getNumberOfMealsEaten(),1);
+    }
+
+    @Test
+    public void testGetId(){
+        Cat cat = new Cat(null, null,2);
+        Assert.assertEquals((int)cat.getId(), 2);
+    }
+
+
+        @Test
+         public void speakTest() {
+        Cat cat = new Cat(null, null,null);
+        Assert.assertEquals(cat.speak(), "meow!");
+        }
+
+        @Test
+        public void inheritanceTest1(){
+        Cat cat = new Cat (null, null, null);
+        Assert.assertTrue(cat instanceof Mammal);
+        }
+
+    @Test
+    public void inheritanceTest2(){
+        Cat cat = new Cat (null, null, null);
+        Assert.assertTrue(cat instanceof Animal);
+    }
+    }
+

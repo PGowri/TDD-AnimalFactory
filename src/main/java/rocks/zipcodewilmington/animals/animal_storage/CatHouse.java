@@ -8,13 +8,16 @@ import rocks.zipcodewilmington.animals.Cat;
  */
 public class CatHouse {
     private static AnimalWarehouse<Cat> catHouse = new AnimalWarehouse<>();
+    static int quantity =0;
 
     public static void add(Cat cat) {
         catHouse.add(cat);
+        quantity++;
     }
 
     public static void remove(Integer id) {
         catHouse.removeAnimalById(id);
+        quantity--;
     }
 
     public static void remove(Cat cat) {
@@ -32,4 +35,6 @@ public class CatHouse {
     public static void clear() {
         catHouse.clear();
     }
+
+
 }
